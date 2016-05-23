@@ -179,15 +179,7 @@ usbRequest_t    *rq = (void *)data;
 
 int main(void)
 {
-	DDRC = 0x38; //111000
-	MCUCR |= (1<<ISC11)|(1<<ISC10);
-	#ifndef OW_ONE_BUS
-	ow_set_bus(&PINB,&PORTB,&DDRB,PB0);
-	#endif
 	
-	search_sensors();
-	measureTemp();
-
     usbInit();
     usbDeviceDisconnect();  // принудительно отключаемс€ от хоста, так делать можно только при выключенных прерывани€х!
     
